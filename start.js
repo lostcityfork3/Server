@@ -7,7 +7,7 @@ const { ExitPromptError } = require('@inquirer/core');
 const { select } = require('@inquirer/prompts');
 
 // if you're forking this feel free to change these :) it does make some assumptions elsewhere (branch names)
-const repoOrg = 'https://github.com/LostCityRS';
+const repoOrg = 'https://github.com/lostcityfork3';
 const engineRepo = 'Engine-TS';
 const contentRepo = 'Content';
 const webRepo = 'Client-TS';
