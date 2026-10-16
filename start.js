@@ -12,9 +12,10 @@ const engineRepo = 'Engine-TS';
 const contentRepo = 'Content';
 const webRepo = 'Client-TS';
 const javaRepo = 'Client-Java';
+const upstreamOrg = 'https://github.com/LostCityRS'; // repos we haven't forked (Client-Java)
 
-function cloneRepo(repo, dir, branch) {
-    child_process.execSync(`git clone ${repoOrg}/${repo} --single-branch -b ${branch} ${dir}`, {
+function cloneRepo(repo, dir, branch, org = repoOrg) {
+    child_process.execSync(`git clone ${org}/${repo} --single-branch -b ${branch} ${dir}`, {
         stdio: 'inherit'
     });
 }
@@ -93,7 +94,7 @@ async function main() {
     }
 
     if (!fs.existsSync('javaclient')) {
-        cloneRepo(javaRepo, 'javaclient', revInfo[config.rev]?.clientBranch ?? config.rev);
+        cloneRepo(javaRepo, 'javaclient', revInfo[config.rev]?.clientBranch ?? config.rev, upstreamOrg);
     }
 
     if (!fs.existsSync('engine/.env') && !fs.existsSync('engine/data/config/world.json')) {
